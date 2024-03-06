@@ -1,13 +1,17 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import Notifications from "./Notifications";
 
-function App() {
-  return (
-    <div>
-      <h1>React App</h1>
-      <p>This is a React app created from scratch.</p>
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
+    <div id="root-notifications">
+      <Notifications />
     </div>
-  );
-}
+    <App />
+  </React.StrictMode>
+);
 
-ReactDOM.render(<App />, document.getElementById("root"));
+reportWebVitals();
