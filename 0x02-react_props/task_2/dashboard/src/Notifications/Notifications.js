@@ -15,8 +15,8 @@ function Notifications() {
           border: "none",
           fontSize: "10px",
           position: "absolute",
-          right: "2px",
-          top: "2px",
+          right: "1rem",
+          top: "1rem",
           cursor: "pointer",
         }}
         aria-label="Close"
