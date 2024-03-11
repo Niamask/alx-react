@@ -19,3 +19,13 @@ li[data="urgent"] {
 [data-notification-type="urgent"] {
   color: red;
 }
+
+.div-flex {
+  display: flex;
+  flex-direction: column;
+  float: right;
+}
+
+.menuItem {
+  text-align: right;
+}
