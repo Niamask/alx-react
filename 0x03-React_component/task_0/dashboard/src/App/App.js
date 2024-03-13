@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import Notifications from "../Notifications/Notifications";
 import Header from "../Header/Header";
 import Login from "../Login/Login";
@@ -20,19 +20,28 @@ const listNotifications = [
   { id: 3, type: "urgent", html: getLatestNotification() },
 ];
 
-function App(isLoggedIn) {
-  return (
-    <React.Fragment>
-      <div className="App">
-        <div className="flex-header">
-          <Notifications listNotifications={listNotifications} />
-          <Header />
+class App extends React.Component {
+  render() {
+    return (
+      <React.Fragment>
+        <div className="App">
+          <div className="flex-header">
+            <Notifications
+              displayDrawer
+              listNotifications={listNotifications}
+            />
+            <Header />
+          </div>
+          {this.props.isLoggedIn ? (
+            <CourseList listCourses={listCourses} />
+          ) : (
+            <Login />
+          )}
+          <Footer />
         </div>
-        {isLoggedIn ? <CourseList listCourses={listCourses} /> : <Login />}
-        <Footer />
-      </div>
-    </React.Fragment>
-  );
+      </React.Fragment>
+    );
+  }
 }
 
 App.defaultProps = {
@@ -44,3 +53,18 @@ App.propTypes = {
 };
 
 export default App;
+
+// function App(isLoggedIn) {
+//   return (
+//     <React.Fragment>
+//       <div className="App">
+//         <div className="flex-header">
+//           <Notifications displayDrawer listNotifications={listNotifications} />
+//           <Header />
+//         </div>
+//         {isLoggedIn ? <CourseList listCourses={listCourses} /> : <Login />}
+//         <Footer />
+//       </div>
+//     </React.Fragment>
+//   );
+// }
