@@ -23,7 +23,7 @@ li[data="urgent"] {
 .div-flex {
   display: flex;
   flex-direction: column;
-  float: right;
+  /* float: right; */
 }
 
 .menuItem {
