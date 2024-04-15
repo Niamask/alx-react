@@ -23,11 +23,6 @@ describe("<App />", () => {
     const wrapper = shallow(<App />);
     expect(wrapper.exists()).toEqual(true);
   });
-  it("should contain the Notifications component", () => {
-    const wrapper = shallow(<App />);
-    expect(wrapper.find("Notifications")).toHaveLength(1);
-  });
-
   it("should contain the Login component", () => {
     const wrapper = shallow(<App />);
     expect(wrapper.find("Login")).toHaveLength(1);
@@ -44,50 +39,26 @@ describe("<App />", () => {
     expect(wrapper.find("Login")).toHaveLength(0);
     expect(wrapper.find("CourseList")).toHaveLength(1);
   });
-
-  it("verify that markNotificationAsRead works as intended", () => {
-    const wrapper = shallow(<App />);
-
-    const instance = wrapper.instance();
-
-    expect(wrapper.state().listNotifications).toEqual(
-      listNotificationsInitialState
-    );
-
-    instance.markNotificationAsRead(4);
-
-    expect(wrapper.state().listNotifications).toEqual(
-      listNotificationsInitialState
-    );
-
-    instance.markNotificationAsRead(3);
-
-    expect(wrapper.state().listNotifications).toEqual(
-      listNotificationsInitialState.slice(0, 2)
-    );
-
-    instance.markNotificationAsRead(1);
-
-    expect(wrapper.state().listNotifications).toEqual(
-      listNotificationsInitialState.slice(1, 2)
-    );
-  });
 });
 
 describe("App Redux", () => {
   it("mapStateToProps returns the right object from user Login", () => {
-    let state = fromJS({
-      isUserLoggedIn: true,
-    });
+    let state = {
+      ui: fromJS({
+        isUserLoggedIn: true,
+      }),
+    };
 
     const result = mapStateToProps(state);
 
     expect(result).toEqual({ isLoggedIn: true });
   });
   it("mapStateToProps returns the right object from display Drawer", () => {
-    let state = fromJS({
-      isNotificationDrawerVisible: true,
-    });
+    let state = {
+      ui: fromJS({
+        isNotificationDrawerVisible: true,
+      }),
+    };
 
     const result = mapStateToProps(state);
 
